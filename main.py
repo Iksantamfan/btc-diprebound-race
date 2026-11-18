@@ -5,7 +5,7 @@ occasional sharp sell-offs that snap back. This bot sits in cash, waits for a
 deep dip against the trailing 4-hour high, buys it in full, and exits on the
 first of: a 2% take-profit, an 0.8% pullback from the best price since entry, or
 a 1.5% stop-loss. One full round trip costs about 26 bps in fees, slippage and
-pool impact, so the 2.2% dip trigger keeps every trade well clear of the costs.
+pool impact, so the 2.4% dip trigger keeps every trade well clear of the costs.
 
 A late-window probe guarantees the bot never finishes a window without a trade:
 if it has still never held a position by bar 1320 (2 hours left) and the price
@@ -27,7 +27,7 @@ import makefun_bars
 SYMBOL = "CBBTC"
 
 # --- main dip trade (basis points) -------------------------------------------
-DIP_BPS = 220            # buy when close is 2.2% under the trailing high
+DIP_BPS = 240            # buy when close is 2.4% under the trailing high
 LOOKBACK_BARS = 240      # trailing-high window: 4 hours of 1-minute bars
 TAKE_PROFIT_BPS = 200    # sell at +2.0% over the entry price
 TRAIL_BPS = 80           # sell on an 0.8% pullback from the post-entry peak
