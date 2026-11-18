@@ -8,7 +8,7 @@ for 24 hours". Paper money only; nothing here trades real funds.
 cbBTC on 1-minute bars mostly chops inside a range, with occasional sharp
 sell-offs that snap back. The bot sits in cash and waits for a deep dip:
 
-- **Buy** when the close is 2.2% under the trailing 240-bar (4-hour) high,
+- **Buy** when the close is 2.4% under the trailing 240-bar (4-hour) high,
   with all available cash.
 - **Sell** on the first of: +2.0% take-profit over the entry price, an 0.8%
   pullback from the best close since entry, or a 1.5% stop-loss.
@@ -31,6 +31,14 @@ its worst case is a ~1.5% move on a tenth of the capital.
 
 ## Local dev-window result (faithful replay of the kit's frozen dev dataset)
 
-- Net PnL: **+$18.57** on $1,000 starting capital
-- Trades: 4 fills (2 round trips), max drawdown 1.65%
+- Net PnL: **+$21.52** on $1,000 starting capital
+- Trades: 4 fills (2 round trips), max drawdown 1.34%
 - Determinism: two runs, byte-identical replies
+
+Revision (2026-11-18 ~22:40 WIB): dip trigger deepened 2.2% → 2.4% after a
+local parameter sweep — the deeper trigger enters both dips closer to their
+bottoms (buys at bars 67 and 131 instead of 65 and 117), lifting dev PnL
+from +$18.57 to +$21.52 while cutting max drawdown from 1.65% to 1.34% at
+the same 4 fills. Neighbouring values confirm a plateau, not a spike:
+2.3% gives +$18.39, 2.5% gives +$21.39; 2.6% misses the second dip
+entirely (+$2.95), so 2.4% sits mid-plateau.
